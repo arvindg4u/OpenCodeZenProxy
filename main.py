@@ -6,7 +6,7 @@ from fastapi.responses import StreamingResponse
 
 app = FastAPI()
 
-UPSTREAM_BASE = "https://opencode.ai/zen/v1"
+UPSTREAM_BASE = os.environ.get("UPSTREAM_BASE", "https://opencode.ai/zen/v1").rstrip("/")
 
 HOP_BY_HOP = frozenset({
     "host", "content-length", "transfer-encoding", "connection",
